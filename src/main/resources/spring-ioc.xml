@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress SpringFacetInspection -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--定义自动扫描的基础包:base-package:指定扫描的基础包，
+    spring在启动的时候会将基础包及子包下所有加了注解的类都自动
+    扫描进IOC容器-->
+    <context:component-scan base-package="com.zhaodf" use-default-filters="true">
+        <!--
+        当定义好基础扫描的包之后，可以排除包中的某些类，使用如下的方式:
+        type:表示指定过滤的规则
+            annotation：按照注解进行排除，标注了指定注解的组件不要,expression表示要过滤的注解
+            assignable：指定排除某个具体的类，按照类排除，expression表示不需要注入的全限定类名
+            aspectj：后面讲aop的时候说明要使用的aspectj表达式，一般不用
+            custom：用户自定义一个typeFilter,自己写代码决定哪些类被过滤掉，一般不用
+            regex：使用正则表达式过滤，一般不用
+
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="assignable" expression="com.zhaodf.controller.UserController"/>-->
+    </context:component-scan>
+</beans>
